@@ -340,4 +340,24 @@
             document.querySelector('.character-name').textContent = characters[winner].name;
             document.querySelector('.character-description').textContent = characters[winner].description;
             document.querySelector('.result-image').src = characters[winner].image;
-            document.querySelectorAll('.question').forEach(q => q.style.
+        display = 'none');
+            document.querySelector('.result').style.display = 'block';
+            document.querySelector('.progress').style.width = '100%';
+        }
+
+        document.querySelectorAll('.answer-option').forEach(button => {
+            button.addEventListener('click', () => {
+                const character = button.dataset.character;
+                characterScores[character]++;
+                
+                if (currentQuestion < totalQuestions) {
+                    currentQuestion++;
+                    showQuestion(currentQuestion);
+                } else {
+                    showLoading();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
